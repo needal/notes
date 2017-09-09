@@ -1,0 +1,39 @@
+类似于maven dependcy的scope,使用在不同环境下。
+  spring引入profile的概念，允许我们在特定环境下将需要的bean定义为不同的profile。
+  比如有一个bean需要在开发环境里使用，可以将其profile定义为dev，另外一个bean需要在生产环境里使用，可以将其profile定义为production。
+  方式1：xml配置
+  <?xml version="1.0" encoding="UTF-8"?>
+  <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd"
+    profile="dev">
+  在beans节点指定所有的bean都受作用。
+  <beans profile="production">
+    <context:component-scan base-package="com.app">
+			<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		</context:component-scan>
+  <beans>
+  指定受扫描的所有bean，如果上级<beans xmlns>定义相同的profile,则不会生效。
+  <beans profile="production">
+  指定单个bean，如果上级定义相同的profile，则不会生效。
+  方式2：注解配置
+  @Configuration
+  @Profile("dev")
+  public class Hello {	
+      @Bean
+      public Hello hello() {
+        return new Hello();
+      }
+  }
+  指定配置类的所有bean。
+  @Configuration
+  public class SpringConfig {
+    @Bean
+    @Profile("production")
+    public World world() {
+      return new World();
+    }
+  }
+  指定单个bean。
+  可以指定多个profile，声明各个之间的关系，用，表示或，用！表示非。

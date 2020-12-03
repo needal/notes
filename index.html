@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="_csrf_header" content="x-csrf-token" />
+    <meta name="_isHashHistory" content="true"/>
+    <meta name="_context" content="{{ ctx.app.config.contextPath }}">
+    <meta name="lang" language="{{ helper.locale('locale',ctx) }}" content="{{ helper.locale('locale',ctx) }}" />
+      <meta name="skin" skin="blue" content="blue" />
+    <meta name="_csrf" content="{{ ctx.session.csrfToken }}" />
+    <link rel="icon" href="<%= BASE_URL + VUE_APP_ASSETS + '/' %>favicon.ico">
+    <title>isearch</title>
+  </head>
+  <script>
+    /*console.log(' %c isearch build on <%= htmlWebpackPlugin.options.localTime %>','color:green')*/
+  </script>
+  <body class="dolphin">
+    <noscript>
+      <strong>We're sorry but isearch doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app">
+    asdqweqweqweqwe
+      <img src="<%= BASE_URL + VUE_APP_ASSETS + '/' %>loading.gif" style="position: fixed; top: 50%; left: 50%; right: 0; bottom: 0; transform: translate(-50%, -50%)">
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
